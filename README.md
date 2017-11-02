@@ -1,5 +1,5 @@
 # gildedrosekata
-the project ref to: https://github.com/NotMyself/GildedRose
+This project refs to: https://github.com/NotMyself/GildedRose
 
 Gilded Rose Refactoring Kata
 

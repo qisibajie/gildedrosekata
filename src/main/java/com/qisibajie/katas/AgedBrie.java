@@ -10,14 +10,18 @@ public class AgedBrie {
     }
 
     public static AgedBrie newInstanceWithSellInAndQuality(int sellIn, int quality) {
-        if(quality > 50 || quality < 0){
+        if (quality > 50 || quality < 0) {
             throw new IllegalArgumentException("Quality should be between 0 and 50.");
         }
         return new AgedBrie(sellIn, quality);
     }
 
     public AgedBrie update() {
-        return new AgedBrie(sellIn - 1, quality < 50 ? quality + 1 : quality);
+        return new AgedBrie(sellIn - 1, notGreaterThanFifty(quality < 50 ? quality + 1 : quality));
+    }
+
+    private int notGreaterThanFifty(int quality) {
+        return quality > 50 ? 50 : quality;
     }
 
     public int getSellIn() {
