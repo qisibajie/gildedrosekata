@@ -4,7 +4,7 @@ public class NormalItem {
     private final int quality;
     private final int sellIn;
 
-    public NormalItem(int sellIn, int quality) {
+    private NormalItem(int sellIn, int quality) {
         this.sellIn = sellIn;
         this.quality = quality;
     }
@@ -19,5 +19,9 @@ public class NormalItem {
 
     public int getQuality() {
         return this.quality;
+    }
+
+    public static NormalItem newInstanceWithSellInAndQuality(int sellIn, int quality) {
+        return new NormalItem(sellIn, quality);
     }
 }
