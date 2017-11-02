@@ -2,6 +2,8 @@ package com.qisibajie.katas;
 
 import org.junit.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
@@ -13,7 +15,7 @@ public class GildedRoseTest {
         NormalItem updatedItem = normalItem.update();
 
         //then
-        assertEquals(9,updatedItem.getSellIn());
+        assertThat(updatedItem.getSellIn(), is(9));
         assertEquals(14,updatedItem.getQuality());
     }
 }
