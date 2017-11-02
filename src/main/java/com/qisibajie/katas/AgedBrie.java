@@ -17,11 +17,7 @@ public class AgedBrie {
     }
 
     public AgedBrie update() {
-        return new AgedBrie(sellIn - 1, notGreaterThanFifty(quality < 50 ? quality + 1 : quality));
-    }
-
-    private int notGreaterThanFifty(int quality) {
-        return quality > 50 ? 50 : quality;
+        return new AgedBrie(sellIn - 1, quality < 50 ? quality + 1 : quality);
     }
 
     public int getSellIn() {
