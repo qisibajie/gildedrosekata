@@ -1,12 +1,8 @@
 package com.qisibajie.katas;
 
-public class BackstagePasses {
-    private final int quality;
-    private final int sellIn;
-
+public class BackstagePasses extends Item{
     public BackstagePasses(int sellIn, int quality) {
-        this.sellIn = sellIn;
-        this.quality = quality;
+        super(sellIn, quality);
     }
 
     public static BackstagePasses newInstanceWithSellInAndQuality(int sellIn, int quality) {
@@ -22,13 +18,5 @@ public class BackstagePasses {
 
     private int notGreaterThanFifty(int quality) {
         return quality > 50 ? 50 : quality;
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
     }
 }

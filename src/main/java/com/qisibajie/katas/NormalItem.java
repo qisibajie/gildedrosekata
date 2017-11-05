@@ -1,12 +1,8 @@
 package com.qisibajie.katas;
 
-public class NormalItem {
-    private final int quality;
-    private final int sellIn;
-
+public class NormalItem extends Item{
     private NormalItem(int sellIn, int quality) {
-        this.sellIn = sellIn;
-        this.quality = quality;
+        super(sellIn, quality);
     }
 
     public NormalItem update() {
@@ -15,14 +11,6 @@ public class NormalItem {
 
     private int notNegative(int quality) {
         return quality < 0? 0: quality;
-    }
-
-    public int getSellIn() {
-        return this.sellIn;
-    }
-
-    public int getQuality() {
-        return this.quality;
     }
 
     public static NormalItem newInstanceWithSellInAndQuality(int sellIn, int quality) {

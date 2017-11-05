@@ -1,12 +1,10 @@
 package com.qisibajie.katas;
 
-public class AgedBrie {
-    private final int sellIn;
-    private final int quality;
+public class AgedBrie extends Item {
+
 
     private AgedBrie(int sellIn, int quality) {
-        this.sellIn = sellIn;
-        this.quality = quality;
+        super(sellIn, quality);
     }
 
     public static AgedBrie newInstanceWithSellInAndQuality(int sellIn, int quality) {
@@ -18,13 +16,5 @@ public class AgedBrie {
 
     public AgedBrie update() {
         return new AgedBrie(sellIn - 1, quality < 50 ? quality + 1 : quality);
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
     }
 }

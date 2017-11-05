@@ -1,12 +1,8 @@
 package com.qisibajie.katas;
 
-public class Sulfuras {
-    private final int quality;
-    private final int sellIn;
-
+public class Sulfuras extends Item {
     private Sulfuras(int sellIn, int quality) {
-        this.sellIn = sellIn;
-        this.quality = quality;
+        super(sellIn, quality);
     }
 
     public static Sulfuras newInstanceWithSellInAndQuality(int sellIn, int quality) {
@@ -18,13 +14,5 @@ public class Sulfuras {
 
     public Sulfuras update() {
         return new Sulfuras(sellIn-1, 80);
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public int getQuality() {
-        return quality;
     }
 }
