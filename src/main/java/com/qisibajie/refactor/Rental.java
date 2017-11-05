@@ -1,20 +1,28 @@
 package com.qisibajie.refactor;
 
 public class Rental {
-    private Movie movie;
-    private int daysRented;
+    private Movie _movie;
+    private int _daysRented;
 
     public Rental(Movie movie, int daysRented) {
-        this.movie = movie;
-        this.daysRented = daysRented;
+        this._movie = movie;
+        this._daysRented = daysRented;
     }
 
     public Movie getMovie() {
-        return movie;
+        return _movie;
     }
 
     public int getDaysRented() {
-        return daysRented;
+        return _daysRented;
+    }
+
+    public double getCharge() {
+        return _movie.getCharge(_daysRented);
+    }
+
+    public int getFrequentRenterPoints() {
+        return _movie.getFrequentRenterPoints(_daysRented);
     }
 }
 
