@@ -1,8 +1,11 @@
 package com.qisibajie.katas;
 
+import com.qisibajie.katas.com.qisibajie.katas.behavior.com.qisibajie.katas.behavior.impl.SulfurasUpdate;
+
 public class Sulfuras extends Item {
     private Sulfuras(int sellIn, int quality) {
         super(sellIn, quality);
+        this.itemUpdate = new SulfurasUpdate();
     }
 
     public static Sulfuras newInstanceWithSellInAndQuality(int sellIn, int quality) {
@@ -10,9 +13,5 @@ public class Sulfuras extends Item {
             throw new IllegalArgumentException("Sulfuras quality should always be 80");
         }
         return new Sulfuras(sellIn, quality);
-    }
-
-    public Sulfuras update() {
-        return new Sulfuras(sellIn-1, 80);
     }
 }

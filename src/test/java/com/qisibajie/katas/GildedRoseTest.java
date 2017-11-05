@@ -2,9 +2,8 @@ package com.qisibajie.katas;
 
 import org.junit.Test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GildedRoseTest {
     @Test
@@ -12,7 +11,7 @@ public class GildedRoseTest {
         //given
         NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(10, 15);
         //when
-        NormalItem updatedItem = normalItem.update();
+        Item updatedItem = normalItem.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(9));
@@ -24,7 +23,7 @@ public class GildedRoseTest {
         //given
         NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 20);
         //when
-        NormalItem updatedItem = normalItem.update();
+        Item updatedItem = normalItem.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-1));
@@ -36,7 +35,7 @@ public class GildedRoseTest {
         //given
         NormalItem normalItem = NormalItem.newInstanceWithSellInAndQuality(0, 0);
         //when
-        NormalItem updatedItem = normalItem.update();
+        Item updatedItem = normalItem.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-1));
@@ -54,7 +53,7 @@ public class GildedRoseTest {
         //given
         AgedBrie agedBrie = AgedBrie.newInstanceWithSellInAndQuality(0, 0);
         //when
-        AgedBrie updatedItem = agedBrie.update();
+        Item updatedItem = agedBrie.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-1));
@@ -66,7 +65,7 @@ public class GildedRoseTest {
         //given
         AgedBrie agedBrie = AgedBrie.newInstanceWithSellInAndQuality(-1, 50);
         //when
-        AgedBrie updatedItem = agedBrie.update();
+        Item updatedItem = agedBrie.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-2));
@@ -85,7 +84,7 @@ public class GildedRoseTest {
         //given
         Sulfuras sulfuras = Sulfuras.newInstanceWithSellInAndQuality(0, 80);
         //when
-        Sulfuras updatedItem = sulfuras.update();
+        Item updatedItem = sulfuras.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-1));
@@ -104,7 +103,7 @@ public class GildedRoseTest {
         //given
         BackstagePasses backstagePasses = BackstagePasses.newInstanceWithSellInAndQuality(11, 20);
         //when
-        BackstagePasses updatedItem = backstagePasses.update();
+        Item updatedItem = backstagePasses.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(10));
@@ -116,7 +115,7 @@ public class GildedRoseTest {
         //given
         BackstagePasses backstagePasses = BackstagePasses.newInstanceWithSellInAndQuality(10, 20);
         //when
-        BackstagePasses updatedItem = backstagePasses.update();
+        Item updatedItem = backstagePasses.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(9));
@@ -128,7 +127,7 @@ public class GildedRoseTest {
         //given
         BackstagePasses backstagePasses = BackstagePasses.newInstanceWithSellInAndQuality(5, 20);
         //when
-        BackstagePasses updatedItem = backstagePasses.update();
+        Item updatedItem = backstagePasses.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(4));
@@ -140,7 +139,7 @@ public class GildedRoseTest {
         //given
         BackstagePasses backstagePasses = BackstagePasses.newInstanceWithSellInAndQuality(0, 20);
         //when
-        BackstagePasses updatedItem = backstagePasses.update();
+        Item updatedItem = backstagePasses.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(-1));
@@ -158,7 +157,7 @@ public class GildedRoseTest {
         //given
         BackstagePasses backstagePasses = BackstagePasses.newInstanceWithSellInAndQuality(1, 50);
         //when
-        BackstagePasses updatedItem = backstagePasses.update();
+        Item updatedItem = backstagePasses.update();
 
         //then
         assertThat(updatedItem.getSellIn(), is(0));
