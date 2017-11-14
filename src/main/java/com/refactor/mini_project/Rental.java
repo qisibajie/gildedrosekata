@@ -44,4 +44,8 @@ class Rental {
             return 2;
         return 1;
     }
+
+    String getTitle() {
+        return getMovie().getTitle();
+    }
 }
