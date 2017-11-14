@@ -21,28 +21,17 @@ public class Customer {
     }
 
     String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
         Enumeration<Rental> rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
         while (rentals.hasMoreElements()) {
             Rental each = rentals.nextElement();
-
-            //add frequent renter points
-            frequentRenterPoints++;
-            //add bonus for a two day new release rental
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-                    each.getDaysRented() > 1)
-                frequentRenterPoints++;
-
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" +
                     String.valueOf(getCharge(each)) + "\n";
-            totalAmount += getCharge(each);
         }
         //add footer lines
-        result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) +
+        result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
+        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) +
                 " frequent renter points";
         return result;
     }
@@ -67,4 +56,32 @@ public class Customer {
         return thisAmount;
     }
 
+    private int getTotalFrequentRenterPoints() {
+        int frequentRenterPoints = 0;
+        Enumeration<Rental> rentals = this.rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = rentals.nextElement();
+            frequentRenterPoints += getFrequentRenterPoints(each);
+
+
+        }
+        return frequentRenterPoints;
+    }
+
+    private int getFrequentRenterPoints(Rental each) {
+        if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
+                each.getDaysRented() > 1)
+            return 2;
+        return 1;
+    }
+
+    private double getTotalAmount() {
+        double totalAmount = 0;
+        Enumeration<Rental> rentals = this.rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = rentals.nextElement();
+            totalAmount += getCharge(each);
+        }
+        return totalAmount;
+    }
 }
