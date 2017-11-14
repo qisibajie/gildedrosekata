@@ -26,10 +26,7 @@ public class Customer {
         Enumeration<Rental> rentals = this.rentals.elements();
         String result = "Rental Record for " + getName() + "\n";
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = rentals.nextElement();
-            thisAmount = getCharge(thisAmount, each);
-
 
             //add frequent renter points
             frequentRenterPoints++;
@@ -40,8 +37,8 @@ public class Customer {
 
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" +
-                    String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+                    String.valueOf(getCharge(each)) + "\n";
+            totalAmount += getCharge(each);
         }
         //add footer lines
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
@@ -50,8 +47,8 @@ public class Customer {
         return result;
     }
 
-    private double getCharge(double thisAmount, Rental each) {
-        //determine amounts for each line
+    private double getCharge(Rental each) {
+        double thisAmount = 0;
         switch (each.getMovie().getPriceCode()) {
             case Movie.REGULAR:
                 thisAmount += 2;
