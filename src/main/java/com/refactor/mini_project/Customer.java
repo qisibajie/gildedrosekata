@@ -33,8 +33,12 @@ public class Customer {
                     .append("\n");
         }
         //add footer lines
-        result.append("Amount owed is ").append(String.valueOf(getTotalAmount())).append("\n");
-        result.append("You earned ").append(String.valueOf(getTotalFrequentRenterPoints())).append(" frequent renter points");
+        result.append("Amount owed is ")
+                .append(getTotalAmount())
+                .append("\n");
+        result.append("You earned ")
+                .append(getTotalFrequentRenterPoints())
+                .append(" frequent renter points");
         return result.toString();
     }
 
