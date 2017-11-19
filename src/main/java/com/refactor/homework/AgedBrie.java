@@ -6,14 +6,12 @@ public class AgedBrie extends Item {
     }
 
     public void updateItem() {
+        if (getSellIn() <= 0) {
+            setQuality(notGreaterThanFifty(getQuality() + 2));
 
-        setQuality(notGreaterThanFifty(getQuality() + 1));
-        setSellIn(getSellIn() - 1);
-
-
-        if (getSellIn() < 0) {
+        } else {
             setQuality(notGreaterThanFifty(getQuality() + 1));
-
         }
+        setSellIn(getSellIn() - 1);
     }
 }

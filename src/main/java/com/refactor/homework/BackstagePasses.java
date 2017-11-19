@@ -6,19 +6,19 @@ public class BackstagePasses extends Item {
     }
 
     public void updateItem() {
-        setQuality(notGreaterThanFifty(getQuality() + 1));
-        if (getSellIn() < 11) {
+
+        if (getSellIn() >= 11) {
             setQuality(notGreaterThanFifty(getQuality() + 1));
         }
-
-        if (getSellIn() < 6) {
-            setQuality(notGreaterThanFifty(getQuality() + 1));
+        if (getSellIn() >= 6 && getSellIn() < 11) {
+            setQuality(notGreaterThanFifty(getQuality() + 2));
         }
-
-        setSellIn(getSellIn() - 1);
-
-        if (getSellIn() < 0) {
+        if (getSellIn() > 0 && getSellIn() < 6) {
+            setQuality(notGreaterThanFifty(getQuality() + 3));
+        }
+        if (getSellIn() <= 0) {
             setQuality(0);
         }
+        setSellIn(getSellIn() - 1);
     }
 }

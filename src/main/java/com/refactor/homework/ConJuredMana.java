@@ -7,13 +7,11 @@ public class ConJuredMana extends Item {
 
     public void updateItem() {
 
-        setQuality(notLessThanZero(getQuality() - 1));
-
-
-        setSellIn(getSellIn() - 1);
-
-        if (getSellIn() < 0) {
+        if (getSellIn() <= 0) {
+            setQuality(notLessThanZero(getQuality() - 2));
+        } else {
             setQuality(notLessThanZero(getQuality() - 1));
         }
+        setSellIn(getSellIn() - 1);
     }
 }
