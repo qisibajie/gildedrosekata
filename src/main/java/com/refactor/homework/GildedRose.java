@@ -124,7 +124,7 @@ public class GildedRose {
     public static void updateQuality()
     {
         for (Item item : items) {
-            item.updateItem(item);
+            item.updateItem();
         }
     }
 
