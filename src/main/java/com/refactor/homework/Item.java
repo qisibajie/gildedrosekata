@@ -11,50 +11,34 @@ public class Item {
         this.setQuality(quality);
     }
 
-    public void updateItem() {
-        if ((!"Aged Brie".equals(getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-            if (getQuality() > 0) {
-                if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                    setQuality(getQuality() - 1);
-                }
-            }
-        } else {
-            setQuality(notGreaterThanFifty(getQuality() + 1));
-            if ("Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                if (getSellIn() < 11) {
-                    setQuality(notGreaterThanFifty(getQuality() + 1));
-                }
-
-                if (getSellIn() < 6) {
-                    setQuality(notGreaterThanFifty(getQuality() + 1));
-                }
-            }
-        }
-
-        if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-            setSellIn(getSellIn() - 1);
-        }
-
-        if (getSellIn() < 0) {
-            if (!"Aged Brie".equals(getName())) {
-                if (!"Backstage passes to a TAFKAL80ETC concert".equals(getName())) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(getName())) {
-                        setQuality(notLessThanZero(getQuality() - 1));
-                    }
-                } else {
-                    setQuality(0);
-                }
-            } else {
-                setQuality(notGreaterThanFifty(getQuality() + 1));
-            }
-        }
+    protected void updateItem() {
+        newInstance(getName(), getSellIn(), getQuality()).updateItem();
     }
 
-    private int notLessThanZero(int quality) {
+    public static Item newInstance(String name, int sellIn, int quality) {
+        if (name.equals("Aged Brie")) {
+            return new AgedBrie(name, sellIn, quality);
+        }
+        if (name.equals("Elixir of the Mongoose")) {
+            return new MongooseElixir(name, sellIn, quality);
+        }
+        if (name.equals("Sulfuras, Hand of Ragnaros")) {
+            return new Sulfuras(name, sellIn, quality);
+        }
+        if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            return new BackstagePasses(name, sellIn, quality);
+        }
+        if (name.equals("Conjured Mana Cake")) {
+            return new ConJuredMana(name, sellIn, quality);
+        }
+        return new DexterityItem(name, sellIn, quality);
+    }
+
+    protected int notLessThanZero(int quality) {
         return quality < 0 ? 0 : quality;
     }
 
-    private int notGreaterThanFifty(int quality) {
+    protected int notGreaterThanFifty(int quality) {
         return quality > 50 ? 50 : quality;
     }
 
@@ -82,4 +66,6 @@ public class Item {
     public void setQuality(int quality) {
         this.quality = quality;
     }
+
+
 }
