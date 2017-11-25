@@ -1,17 +1,21 @@
 package com.refactor.homework;
 
 public class ConJuredMana extends Item {
-    public ConJuredMana(String name, int sellIn, int quality) {
+    ConJuredMana(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    public void updateItem() {
-
-        if (getSellIn() <= 0) {
-            setQuality(notLessThanZero(getQuality() - 2));
+    @Override
+    protected void updateQuality(int sellIn, int quality) {
+        if (sellIn <= 0) {
+            setQuality(notLessThanZero(quality - 2));
         } else {
-            setQuality(notLessThanZero(getQuality() - 1));
+            setQuality(notLessThanZero(quality - 1));
         }
-        setSellIn(getSellIn() - 1);
+    }
+
+    @Override
+    protected void updateSellIn(int sellIn) {
+        setSellIn(sellIn - 1);
     }
 }

@@ -1,11 +1,17 @@
 package com.refactor.homework;
 
 public class Sulfuras extends Item {
-    public Sulfuras(String name, int sellIn, int quality) {
+    Sulfuras(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    public void updateItem() {
+    @Override
+    protected void updateQuality(int sellIn, int quality) {
+        setQuality(80);
+    }
 
+    @Override
+    protected void updateSellIn(int sellIn) {
+//        setSellIn(sellIn - 1);
     }
 }

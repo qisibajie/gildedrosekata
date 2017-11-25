@@ -1,9 +1,9 @@
 package com.refactor.homework;
 
-public class Item {
-    public String name;
-    public int sellIn;
-    public int quality;
+public abstract class Item {
+    protected String name;
+    protected int sellIn;
+    protected int quality;
 
     public Item(String name, int sellIn, int quality) {
         this.setName(name);
@@ -11,38 +11,27 @@ public class Item {
         this.setQuality(quality);
     }
 
-    protected void updateItem() {
-        newInstance(getName(), getSellIn(), getQuality()).updateItem();
+    static Item newInstance(String name, int sellIn, int quality) {
+        return ItemFactory.newInstance(name, sellIn, quality);
     }
 
-    public static Item newInstance(String name, int sellIn, int quality) {
-        if (name.equals("Aged Brie")) {
-            return new AgedBrie(name, sellIn, quality);
-        }
-        if (name.equals("Elixir of the Mongoose")) {
-            return new MongooseElixir(name, sellIn, quality);
-        }
-        if (name.equals("Sulfuras, Hand of Ragnaros")) {
-            return new Sulfuras(name, sellIn, quality);
-        }
-        if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-            return new BackstagePasses(name, sellIn, quality);
-        }
-        if (name.equals("Conjured Mana Cake")) {
-            return new ConJuredMana(name, sellIn, quality);
-        }
-        return new DexterityItem(name, sellIn, quality);
+    void updateItem() {
+        updateQuality(getSellIn(), getQuality());
+        updateSellIn(getSellIn());
     }
 
-    protected int notLessThanZero(int quality) {
+    protected abstract void updateQuality(int sellIn, int quality);
+
+    protected abstract void updateSellIn(int sellIn);
+
+    int notLessThanZero(int quality) {
         return quality < 0 ? 0 : quality;
     }
 
-    protected int notGreaterThanFifty(int quality) {
+    int notGreaterThanFifty(int quality) {
         return quality > 50 ? 50 : quality;
     }
 
-    /* Generated getter and setter code */
     public String getName() {
         return name;
     }
@@ -66,6 +55,4 @@ public class Item {
     public void setQuality(int quality) {
         this.quality = quality;
     }
-
-
 }

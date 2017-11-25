@@ -1,24 +1,28 @@
 package com.refactor.homework;
 
 public class BackstagePasses extends Item {
-    public BackstagePasses(String name, int sellIn, int quality) {
+    BackstagePasses(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 
-    public void updateItem() {
-
-        if (getSellIn() >= 11) {
-            setQuality(notGreaterThanFifty(getQuality() + 1));
+    @Override
+    protected void updateQuality(int sellIn, int quality) {
+        if (sellIn >= 11) {
+            setQuality(notGreaterThanFifty(quality + 1));
         }
-        if (getSellIn() >= 6 && getSellIn() < 11) {
-            setQuality(notGreaterThanFifty(getQuality() + 2));
+        if (sellIn >= 6 && sellIn < 11) {
+            setQuality(notGreaterThanFifty(quality + 2));
         }
-        if (getSellIn() > 0 && getSellIn() < 6) {
-            setQuality(notGreaterThanFifty(getQuality() + 3));
+        if (sellIn > 0 && sellIn < 6) {
+            setQuality(notGreaterThanFifty(quality + 3));
         }
-        if (getSellIn() <= 0) {
+        if (sellIn <= 0) {
             setQuality(0);
         }
-        setSellIn(getSellIn() - 1);
+    }
+
+    @Override
+    protected void updateSellIn(int sellIn) {
+        setSellIn(sellIn - 1);
     }
 }
