@@ -1,0 +1,58 @@
+# 停车，取车，停车位
+#Task1: get current parking space
+Given: a parking lot with 100 parking spaces, 0 car is parked in it
+When: get current number of parking spaces
+Then: current parking spaces are 100
+
+#Task2: get current parking space
+Given: a parking lot with 100 parking spaces, 20 cars parking in it
+When: get current number of parking spaces
+Then: current parking spaces are 80
+
+#Task3: park car
+Given: a parking lot with 100 parking spaces, 30 cars parking in it
+When: park a car
+Then: 31 cars in the parking spaces
+
+#Task4: park car
+Given: a parking lot with 100 parking spaces, 100 cars parking in it
+When: park 1 car
+Then: meet exception
+
+#Task5: park car
+Given: a parking lot with 100 parking spaces, 1 car parking in it, 1 ticket(T1)
+When: park a car.
+Then: return ticket(T2), different with T1.
+
+#Task6: park car
+Given: a parking lot with 100 parking spaces, 99 car parking in it, return 99 different tickets.
+When: park a car.
+Then: return ticket(T100), different with others 99 tickets.
+
+#Task7: pick up 1 car
+Given: a packing lot with 100 parking spaces, 10 cars with tickets(T1-T10) parking in it
+When: pick up a car with T1
+Then: 9 cars in parking spaces
+
+#Task8: pick up 1 car
+Given: a packing lot with 100 parking spaces, 10 cars with tickets(T1-T10) parking in it
+When: pick up a car with T11
+Then: meet exception
+
+#Task9: pick up 1 car
+Given: a packing lot with 100 parking spaces, 10 cars with tickets(T1-T10) parking in it, pick up a car with T1
+When: pick up a car with T1
+Then: meet exception
+
+#Task10: pick up 1 car
+Given: a packing lot with 100 parking spaces, 1 car A with ticket(T1) parking in it
+When: pick up car A with T1
+Then: 0 car parking in it
+
+#Task11: pick up 1 car
+Given: a packing lot with 100 parking spaces, 2 cars A, B with ticket(T1, T2) parking in it
+When: pick up car A with T2
+Then: meet exception
+
+
+

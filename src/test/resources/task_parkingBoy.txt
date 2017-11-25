@@ -1,0 +1,52 @@
+# 停车
+#Task1: park car to one empty parking lot
+Given: 1 parking lot P1 with 100 parking spaces, 0 car is parked in it
+When: parkingBoy park a car('B1')
+Then: success and return a ticket('P1-TB1')
+
+#Task2: park car to one full parking lot
+Given: 1 parking lot P2 with 100 parking spaces, 100 car is parked in it
+When: parkingBoy park a car('B1')
+Then: throw no available parking space
+
+#Task3: park car to two empty parking lots P1 and P2
+Given: 2 parking lot A,B each with 100 parking spaces, 0 car is parked in them
+When: parkingBoy park a car('B1')
+Then: success and return a ticket('P1-TB1')
+
+#Task4: park car to not full parking lot P1, not full parking lot P2
+Given: 2 parking lot P1, P2 each with 100 parking spaces, parking lot P1 parked 30 cars in it, parking lot P2 parked 30 cars in it.
+When: parkingBoy park a car('A1')
+Then: success and return a ticket('P1-TA1')
+
+#Task5: park car to full parking lot P1, not full parking lot P2
+Given: 2 parking lot P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 30 cars in it.
+When: parkingBoy park a car('A1')
+Then: success and return a ticket('P2-TA1')
+
+#Task6: park car to both full parking lot
+Given: 2 parking lots P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 100 cars in it.
+When: parkingBoy park a car('A1')
+Then: can't park car, throw no available parking space
+
+#取车
+#Task7: pick up 1 car via parking boy
+Given: 1 parking lot P1, park a car (B1) via parking boy, got the ticket (P1-TB1)
+When: pick up 1 car with ticket P1-TB1 via parking boy
+Then: return car B1
+
+#Task8: pick up 1 car via parking boy
+Given: 2 parking lot P1,P2, park a car (B1) via parking boy, got the ticket (T1)
+When: pick up 1 car with ticket T1 via parking boy
+Then: return car B1
+
+#Task9: pick up 1 car via parking boy with invalid ticket
+Given: 2 parking lot P1,P2, park a car (B1)with ticket(P2-TB1) via parking boy, got the ticket (P2-TA1)
+When: pick up 1 car with ticket T1 via parking boy
+Then: return car B1
+
+#取停车
+#Task10: full parking lot P1, not full parking lot P2, pick up 1 car from P1, park car, return ticket of P1
+Given: 2 parking lot P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 30 cars in it. Pick up 1 car from P1.
+When: parkingBoy park a car('A1')
+Then: success and return a ticket('P1-TA1')

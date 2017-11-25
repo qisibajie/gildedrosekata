@@ -1,0 +1,48 @@
+# Manager停车
+#Task1: park car to one empty parking lot
+Given: 1 parking manager, 1 parking lot P1 with 100 parking spaces, 0 car is parked in it
+When: parking manager parked a car('B1')
+Then: success and return a ticket('P1-TB1')
+
+#Task2: park car to one full parking lot
+When: parking manager park a car('B1')
+Then: throw no available parking space
+
+#Task3: manager park car via parking boy with available parking space parking lot
+Given: 1 parking manger, 1 parking boy, 1 available parking space parking lot managed by parking boy
+When: parking manager park car via parking boy
+Then: success and return a ticket
+
+#Task4: manger park car via parking boy with no available parking space parking lot
+Given: 1 parking manger, 1 parking boy, 1 unavailable parking space parking lot managed by parking boy
+Then: throw no available parking space exception
+
+# Manager取车
+#Task5: manager pick up 1 car parked by himself
+Given: 1 parking lot P1, park a car (B1) via manager self, the ticket (P1-TB1)
+When: parking manager pick up 1 car with ticket P1-TB1
+Then: return car B1
+
+#Task6: manager pick up 1 car parked by parking boy
+Given: 1 parking lot P1, park a car (B1) via parking boy, got the ticket (T1)
+When: parking manager pick up 1 car with ticket T1
+Then: return car B1
+
+#Task7: manager pick up 1 car with invalid ticket
+Given: 1 parking lot P1, park a car (B1) via parking boy, got the ticket (T1)
+When: parking manager pick up 1 car with invalid ticket
+Then: throw parking ticket invalid exception
+
+
+#Manager 管理多个停车仔
+
+#Task8: parking marnager managed two parking boy to park car to available parking lot
+Given: two parking boys managed by parking manager, 2 available parking spaces parking lot P1, P2
+When: parking manager park a car('A1')
+Then: success and return a ticket('P1-TA1')
+
+
+#Task9: parking marnager managed two parking boy to park car to unavailable parking lot
+Given: two parking boys managed by parking manager, 2 unavailable parking spaces parking lot P1, P2
+When: parking manager park a car('A1')
+Then: throw no available parking space exception

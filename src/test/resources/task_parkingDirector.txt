@@ -1,0 +1,34 @@
+#Task1 no manager
+Given 0 manager
+When generate report
+Then the report should be empty
+
+#Task2 1 manager, 1 parking boy
+Given 1 manager, 1 managed parking boy
+When generate report
+Then generate report successfully
+
+#Task3 1 manager, 1 parking boy, 1 parking lot
+Given 1 manager, 1 managed parking boy, 1 managed parking lot
+When generate report
+Then generate report successfully
+
+#Task4 1 manager, 1 parking boy, 1 super parking boy, 1 parking lot
+Given 1 manager, 1 parking boy, 1 super parking boy, 1 parking lot
+When generate report
+Then generate report successfully
+
+#Task5 2 managers
+Given 2 managers, each managed 1 parking boy
+When generate report
+Then generate report successfully
+
+Task6
+Given 2 managers, one manged 1 parking boy, 1 parking lot, other one managed 1 parking boy, 1 parking lot
+When generate report
+Then generate report successfully
+
+Task7
+Given 2 managers, one manged 1 parking boy, 1 parking lot, other one managed 1 parking boy, 1 smart parking boy, 1 parking lot
+When generate report
+Then generate report successfully

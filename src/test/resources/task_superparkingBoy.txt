@@ -1,0 +1,32 @@
+# 停车
+#Task1: park car to one empty parking lot
+Given: 1 parking lot P1 with 100 parking spaces, 0 car is parked in it
+When: superParkingBoy park a car('B1')
+Then: success and return a ticket('P1-TB1')
+
+#Task2: park car to one full parking lot
+Given: 1 parking lot P2 with 100 parking spaces, 100 car is parked in it
+When: superParkingBoy park a car('B1')
+Then: throw no available parking space
+
+#Task3: park car to two empty parking lots P1 and P2
+Given: 2 parking lot A,B each with 100 parking spaces, 0 car is parked in them
+When: superParkingBoy park a car('B1')
+Then: success and return a ticket('P1-TB1')
+
+#Task4: park car to not full parking lot P1, not full parking lot P2
+Given: 2 parking lot P1, P2 each with 100, 50 parking spaces, parking lot P1 parked 20 cars in it, parking lot P2 parked 11 cars in it.
+When: superParkingBoy park a car('A1')
+Then: success and return a ticket('P1-TA1')
+
+#Task5: park car to not full parking lot P1, not full parking lot P2
+Given: 2 parking lot P1, P2 each with 100, 50 parking spaces, parking lot P1 parked 21 cars in it, parking lot P2 parked 10 cars in it.
+When: superParkingBoy park a car('A1')
+Then: success and return a ticket('P2-TA1')
+
+#Task6: park car to both full parking lot
+Given: 2 parking lots P1, P2 each with 100 parking spaces, parking lot P1 parked 100 cars in it, parking lot P2 parked 100 cars in it.
+When: superParkingBoy park a car('A1')
+Then: can't park car, throw no available parking space
+
+

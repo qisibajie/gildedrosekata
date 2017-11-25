@@ -1,0 +1,89 @@
+#给出 一个长度，支持比较这个长度是否相等
+Task1:
+Given length 9
+Then return myLength 9
+
+Task2:
+Given length 10
+Then return myLength 10
+
+Task3:
+Given length 9, length 9
+Then return equal
+
+Task4:
+Given length 9, length 10
+Then return not equal
+
+
+#添加单位，只需要比较单位相同的长度
+Task4:
+Given length -1cm
+Then return exception
+
+Task5:
+Given length 9cm, 9cm
+Then return 0
+
+Task6:
+Given length 10m, 10m
+Then return 0
+
+Task7:
+Given length 9cm, 10cm
+then return -1
+
+Task8:
+Given length 10m, 9m
+Then return 1
+
+Task9:
+Given length 9cm, 9m
+Then return not compare exception
+
+
+
+#支持两个不同单位长度的比较(支持三种单位(m,cm,mm))
+Task10:
+Given length 9m, 900cm
+then return 0
+
+Task11:
+Given length 9m, 10cm
+Then return 1
+
+Task12:
+Given length 10cm, 9m
+Then return -1
+
+Task13:
+Given length 9m, 9000mm
+Then return 0
+
+Task14:
+Given length 10mm, 9m
+Then return -1
+
+Task15:
+Given length 9m, 10mm
+Then return 1
+
+Task16:
+Given length 9cm, 90mm
+Then return 0
+
+Task17:
+Given length 9cm, 10mm
+Then return 1
+
+Task18:
+Given length 10mm, 9cm
+Then return -1
+
+Task19:
+Given unit 'km'
+Then return exception
+
+Task20
+Given length -2
+Then return exception
