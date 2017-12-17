@@ -5,7 +5,6 @@ public class SystemPermission {
     private SystemAdmin admin;
     private boolean granted;
     private boolean isUnixPermissionGranted;
-    private String state;
     public final static String REQUESTED = "REQUESTED";
     public final static String CLAIMED = "CLAIMED";
     public final static String GRANTED = "GRANTED";
@@ -16,7 +15,6 @@ public class SystemPermission {
 
     public SystemPermission(SystemProfile profile) {
         this.profile = profile;
-        setState(REQUESTED);
         setState(PermissionState.REQUESTED);
         granted = false;
         notifyAdminOfPermissionRequest();
@@ -31,10 +29,8 @@ public class SystemPermission {
             return;
         willBeHandledBy(admin);
         if (getState().equals(REQUESTED)) {
-            setState(CLAIMED);
             setState(PermissionState.CLAIMED);
         } else if (getState().equals(UNIX_REQUESTED)) {
-            setState(UNIX_CLAIMED);
             setState(PermissionState.UNIX_CLAIMED);
         }
     }
@@ -49,7 +45,6 @@ public class SystemPermission {
         if (!this.admin.equals(admin))
             return;
         granted = false;
-        setState(DENIED);
         setState(PermissionState.DENIED);
         notifyUserOfPermissionRequestResult();
     }
@@ -67,12 +62,10 @@ public class SystemPermission {
         if (profile.isUnixPermissionRequired() && getState().equals(UNIX_CLAIMED))
             isUnixPermissionGranted = true;
         else if (profile.isUnixPermissionRequired() && !profile.isUnixPermissionGranted()) {
-            setState(UNIX_REQUESTED);
             setState(PermissionState.UNIX_REQUESTED);
             notifyUnixAdminsOfPermissionRequest();
             return;
         }
-        setState(GRANTED);
         setState(PermissionState.GRANTED);
         granted = true;
         notifyUserOfPermissionRequestResult();
@@ -94,11 +87,7 @@ public class SystemPermission {
         return permissionState.toString();
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setState(PermissionState permissionState) {
+    private void setState(PermissionState permissionState) {
         this.permissionState = permissionState;
     }
 
