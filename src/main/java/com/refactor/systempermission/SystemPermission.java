@@ -5,12 +5,6 @@ public class SystemPermission {
     private SystemAdmin admin;
     private boolean granted;
     private boolean isUnixPermissionGranted;
-    public final static String REQUESTED = "REQUESTED";
-    public final static String CLAIMED = "CLAIMED";
-    public final static String GRANTED = "GRANTED";
-    public final static String DENIED = "DENIED";
-    public static final String UNIX_REQUESTED = "UNIX_REQUESTED";
-    public static final String UNIX_CLAIMED = "UNIX_CLAIMED";
     private PermissionState permissionState;
 
     public SystemPermission(SystemProfile profile) {
