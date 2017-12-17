@@ -8,9 +8,9 @@ public class SystemPermission {
     private PermissionState permissionState;
 
     public SystemPermission(SystemProfile profile) {
-        this.profile = profile;
+        this.setProfile(profile);
         setState(PermissionState.REQUESTED);
-        granted = false;
+        setGranted(false);
         notifyAdminOfPermissionRequest();
     }
 
@@ -23,17 +23,11 @@ public class SystemPermission {
     }
 
     void willBeHandledBy(SystemAdmin admin) {
-        this.admin = admin;
+        this.setAdmin(admin);
     }
 
     public void deniedBy(SystemAdmin admin) {
-        if (!getState().equals(PermissionState.CLAIMED) && !getState().equals(PermissionState.UNIX_CLAIMED))
-            return;
-        if (!this.admin.equals(admin))
-            return;
-        granted = false;
-        setState(PermissionState.DENIED);
-        notifyUserOfPermissionRequestResult();
+        permissionState.deniedBy(admin, this);
     }
 
     void notifyUserOfPermissionRequestResult() {
@@ -41,21 +35,7 @@ public class SystemPermission {
     }
 
     public void grantedBy(SystemAdmin admin) {
-        if (!getState().equals(PermissionState.CLAIMED) && !getState().equals(PermissionState.UNIX_CLAIMED))
-            return;
-        if (!this.admin.equals(admin))
-            return;
-
-        if (profile.isUnixPermissionRequired() && getState().equals(PermissionState.UNIX_CLAIMED))
-            isUnixPermissionGranted = true;
-        else if (profile.isUnixPermissionRequired() && !profile.isUnixPermissionGranted()) {
-            setState(PermissionState.UNIX_REQUESTED);
-            notifyUnixAdminsOfPermissionRequest();
-            return;
-        }
-        setState(PermissionState.GRANTED);
-        granted = true;
-        notifyUserOfPermissionRequestResult();
+        permissionState.grantedBy(admin, this);
     }
 
     void notifyUnixAdminsOfPermissionRequest() {
@@ -74,4 +54,27 @@ public class SystemPermission {
         this.permissionState = permissionState;
     }
 
+    public SystemAdmin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(SystemAdmin admin) {
+        this.admin = admin;
+    }
+
+    public void setGranted(boolean granted) {
+        this.granted = granted;
+    }
+
+    public SystemProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(SystemProfile profile) {
+        this.profile = profile;
+    }
+
+    public void setUnixPermissionGranted(boolean unixPermissionGranted) {
+        isUnixPermissionGranted = unixPermissionGranted;
+    }
 }
