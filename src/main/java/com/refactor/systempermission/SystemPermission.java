@@ -91,7 +91,7 @@ public class SystemPermission {
     }
 
     public String getState() {
-        return state;
+        return permissionState.toString();
     }
 
     public void setState(String state) {
