@@ -8,4 +8,8 @@ public class NullCustomer extends Customer {
     public String getName(){
         return "occupant";
     }
+
+    public BillingPlan getPlan() {
+        return BillingPlan.basic();
+    }
 }

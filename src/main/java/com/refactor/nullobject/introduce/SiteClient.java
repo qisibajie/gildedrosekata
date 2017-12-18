@@ -5,14 +5,8 @@ public class SiteClient {
     public static void main(String[] args) {
         Site site = new Site();
         Customer customer = site.getCustomer();
-        BillingPlan plan;
-        if (customer.isNull()) {
-            plan = BillingPlan.basic();
-        } else {
-            plan = customer.getPlan();
-        }
-        String customerName;
-        customerName = customer.getName();
+        BillingPlan plan = customer.getPlan();
+        String customerName = customer.getName();
         int weeksDelinquent;
         if (customer.isNull()) {
             weeksDelinquent = 0;
