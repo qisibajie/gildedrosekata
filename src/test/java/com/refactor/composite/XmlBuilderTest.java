@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class XmlBuilderTest {
 
     @Test
@@ -17,6 +19,7 @@ public class XmlBuilderTest {
         Orders orders = new Orders();
         orders.addOrder(order);
         System.out.println(new XmlBuilder(orders).getContents());
+        assertEquals("<orders><order id='321'><product id='f1234' color='red' size='medium'><price currency='USD'>8.95</price>Fire Truck</product><product id='p1112' color='red'><price currency='USD'>230.0</price>Hello World</product></order></orders>", new XmlBuilder(orders).getContents());
     }
 
 }

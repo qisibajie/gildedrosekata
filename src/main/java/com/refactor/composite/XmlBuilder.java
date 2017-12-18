@@ -54,12 +54,14 @@ public class XmlBuilder {
     }
 
     private void writePriceTo(StringBuilder xml, Product product) {
-        xml.append("<price");
-        xml.append(" currency='");
-        xml.append(getCurrentFor(product));
-        xml.append("'>");
-        xml.append(product.getPrice());
-        xml.append("</price>");
+        TagNode priceNode = new TagNode("price");
+        priceNode.addAttribute("currency", "USD");
+        priceNode.addValue(priceFor(product));
+        xml.append(priceNode.toString());
+    }
+
+    private String priceFor(Product product) {
+        return String.valueOf(product.getPrice());
     }
 
     private String getCurrentFor(Product product) {
