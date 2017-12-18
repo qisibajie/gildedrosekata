@@ -34,22 +34,16 @@ public class XmlBuilder {
     private void writeProductsTo(StringBuilder xml, Order order) {
         for (int j = 0; j < order.getProductCount(); j++) {
             Product product = order.getProduct(j);
-            xml.append("<product");
-            xml.append(" id='");
-            xml.append(product.getID());
-            xml.append("'");
-            xml.append(" color='");
-            xml.append(getColorFor(product));
-            xml.append("'");
+            TagNode productNode = new TagNode("product");
+            productNode.addAttribute("id", product.getID());
+            productNode.addAttribute("color", getColorFor(product));
+
             if (product.getSize() != ProductSize.NOT_APPLICABLE) {
-                xml.append(" size='");
-                xml.append(getSizeFor(product));
-                xml.append("'");
+                productNode.addAttribute("size", getSizeFor(product));
             }
-            xml.append(">");
             writePriceTo(xml, product);
             xml.append(product.getName());
-            xml.append("</product>");
+            xml.append(productNode.toString());
         }
     }
 
