@@ -20,34 +20,38 @@ public class XmlBuilder {
             xml.append(" id='");
             xml.append(order.getOrderId());
             xml.append("'>");
-            for (int j = 0; j < order.getProductCount(); j++) {
-                Product product = order.getProduct(j);
-                xml.append("<product");
-                xml.append(" id='");
-                xml.append(product.getID());
-                xml.append("'");
-                xml.append(" color='");
-                xml.append(getColorFor(product));
-                xml.append("'");
-                if (product.getSize() != ProductSize.NOT_APPLICABLE) {
-                    xml.append(" size='");
-                    xml.append(getSizeFor(product));
-                    xml.append("'");
-                }
-                xml.append(">");
-                xml.append("<price");
-                xml.append(" currency='");
-                xml.append(getCurrentFor(product));
-                xml.append("'>");
-                xml.append(product.getPrice());
-                xml.append("</price>");
-                xml.append(product.getName());
-                xml.append("</product>");
-            }
+            writeProductsTo(xml, order);
             xml.append("</order>");
         }
         xml.append("</orders>");
         return xml.toString();
+    }
+
+    private void writeProductsTo(StringBuilder xml, Order order) {
+        for (int j = 0; j < order.getProductCount(); j++) {
+            Product product = order.getProduct(j);
+            xml.append("<product");
+            xml.append(" id='");
+            xml.append(product.getID());
+            xml.append("'");
+            xml.append(" color='");
+            xml.append(getColorFor(product));
+            xml.append("'");
+            if (product.getSize() != ProductSize.NOT_APPLICABLE) {
+                xml.append(" size='");
+                xml.append(getSizeFor(product));
+                xml.append("'");
+            }
+            xml.append(">");
+            xml.append("<price");
+            xml.append(" currency='");
+            xml.append(getCurrentFor(product));
+            xml.append("'>");
+            xml.append(product.getPrice());
+            xml.append("</price>");
+            xml.append(product.getName());
+            xml.append("</product>");
+        }
     }
 
     private String getCurrentFor(Product product) {
