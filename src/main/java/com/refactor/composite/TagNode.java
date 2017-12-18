@@ -23,7 +23,7 @@ public class TagNode {
         attributes.append("'");
     }
 
-    public void addValue(String value) {
+    void addValue(String value) {
         this.value = value;
     }
 
@@ -47,7 +47,7 @@ public class TagNode {
 
     private List children() {
         if (children == null) {
-            children = new ArrayList<TagNode>();
+            children = new ArrayList<>();
         }
         return children;
     }
