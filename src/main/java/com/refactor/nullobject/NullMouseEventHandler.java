@@ -4,8 +4,8 @@ import javax.naming.Context;
 import java.awt.*;
 
 public class NullMouseEventHandler extends MouseEventHandler {
-    public NullMouseEventHandler(Context context){
-        super(context);
+    public NullMouseEventHandler(){
+        super(null);
     }
 
     public boolean mouseDown(Graphics graphics, Event event, int x, int y) {
