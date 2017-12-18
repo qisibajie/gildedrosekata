@@ -18,20 +18,19 @@ public class XmlBuilder {
     }
 
     private void writeOrdersTo(StringBuilder xml) {
-        xml.append("<orders>");
+        TagNode ordersNode = new TagNode("orders");
         for (int i = 0; i < orders.getOrderCount(); i++) {
             Order order = orders.getOrder(i);
-            xml.append("<order");
-            xml.append(" id='");
-            xml.append(order.getOrderId());
-            xml.append("'>");
-            writeProductsTo(xml, order);
-            xml.append("</order>");
+            TagNode orderNode = new TagNode("order");
+            orderNode.addAttribute("id", order.getOrderId());
+
+            writeProductsTo(orderNode, order);
+            ordersNode.add(orderNode);
         }
-        xml.append("</orders>");
+        xml.append(ordersNode.toString());
     }
 
-    private void writeProductsTo(StringBuilder xml, Order order) {
+    private void writeProductsTo(TagNode orderTag, Order order) {
         for (int j = 0; j < order.getProductCount(); j++) {
             Product product = order.getProduct(j);
             TagNode productNode = new TagNode("product");
@@ -41,17 +40,17 @@ public class XmlBuilder {
             if (product.getSize() != ProductSize.NOT_APPLICABLE) {
                 productNode.addAttribute("size", getSizeFor(product));
             }
-            writePriceTo(xml, product);
-            xml.append(product.getName());
-            xml.append(productNode.toString());
+            writePriceTo(productNode, product);
+            productNode.addValue(product.getName());
+            orderTag.add(productNode);
         }
     }
 
-    private void writePriceTo(StringBuilder xml, Product product) {
+    private void writePriceTo(TagNode productNode, Product product) {
         TagNode priceNode = new TagNode("price");
         priceNode.addAttribute("currency", "USD");
         priceNode.addValue(priceFor(product));
-        xml.append(priceNode.toString());
+        productNode.add(priceNode);
     }
 
     private String priceFor(Product product) {
