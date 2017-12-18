@@ -13,6 +13,11 @@ public class XmlBuilder {
 
     public String getContents() {
         StringBuilder xml = new StringBuilder();
+        writeOrdersTo(xml);
+        return xml.toString();
+    }
+
+    private void writeOrdersTo(StringBuilder xml) {
         xml.append("<orders>");
         for (int i = 0; i < orders.getOrderCount(); i++) {
             Order order = orders.getOrder(i);
@@ -24,7 +29,6 @@ public class XmlBuilder {
             xml.append("</order>");
         }
         xml.append("</orders>");
-        return xml.toString();
     }
 
     private void writeProductsTo(StringBuilder xml, Order order) {
