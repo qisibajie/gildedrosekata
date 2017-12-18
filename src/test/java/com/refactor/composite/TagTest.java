@@ -33,4 +33,26 @@ public class TagTest {
                         "</product>";
         assertEquals(expected, productTag.toString());
     }
+
+    @Test
+    public void testAddingChildrenAndGrnadChildren(){
+        String expected =
+                "<orders>"+
+                     "<order>"+
+                        "<product>" +
+                                "<price>" +
+                                "</price>" +
+                        "</product>"+
+                    "</order>" +
+                "</orders>";
+        TagNode ordersTag = new TagNode("orders");
+        TagNode orderTag = new TagNode("order");
+        TagNode productTag = new TagNode("product");
+        TagNode priceTag = new TagNode("price");
+        ordersTag.add(orderTag);
+        orderTag.add(productTag);
+        productTag.add(priceTag);
+        assertEquals(expected, ordersTag.toString());
+    }
+
 }
