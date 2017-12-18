@@ -5,21 +5,13 @@ import java.awt.*;
 
 public class MouseEventHandler {
     private final Context context;
-    private Graphics graphics;
-    private Event event;
-    private int y;
-    private int x;
 
     public MouseEventHandler(Context context) {
         this.context = context;
     }
 
     public boolean mouseMove(Graphics graphics, Event event, int x, int y) {
-        this.graphics = graphics;
-        this.event = event;
-        this.x = x;
-        this.y = y;
-        return true;
+        return false;
     }
 
     public boolean mouseDown(Graphics graphics, Event event, int x, int y) {
