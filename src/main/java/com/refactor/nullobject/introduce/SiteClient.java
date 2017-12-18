@@ -6,19 +6,19 @@ public class SiteClient {
         Site site = new Site();
         Customer customer = site.getCustomer();
         BillingPlan plan;
-        if(customer == null){
+        if(customer.isNull()){
            plan = BillingPlan.basic();
         }else {
             plan = customer.getPlan();
         }
         String customerName;
-        if(customer == null){
+        if(customer.isNull()){
             customerName ="occupant";
         }else {
             customerName = customer.getName();
         }
         int weeksDelinquent;
-        if(customer==null){
+        if(customer.isNull()){
             weeksDelinquent = 0;
         }else{
             weeksDelinquent = customer.getHistory().getWeeksDelinquentInLastYear();
