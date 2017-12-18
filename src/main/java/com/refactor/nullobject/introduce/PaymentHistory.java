@@ -1,7 +1,13 @@
 package com.refactor.nullobject.introduce;
 
 public class PaymentHistory {
-    int getWeeksDelinquentInLastYear(){
-        return 0;
+    private int weeksDelinquentInLastYear;
+
+    int getWeeksDelinquentInLastYear() {
+        return weeksDelinquentInLastYear;
+    }
+
+    static PaymentHistory newNull() {
+        return new NullPaymentHistory();
     }
 }
