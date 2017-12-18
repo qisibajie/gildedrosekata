@@ -5,6 +5,10 @@ public class Customer {
     private BillingPlan plan;
     private PaymentHistory history;
 
+    protected Customer() {
+
+    }
+
     public String getName() {
         return name;
     }
@@ -19,6 +23,10 @@ public class Customer {
 
     public boolean isNull() {
         return false;
+    }
+
+    static Customer newNull(){
+        return  new NullCustomer();
     }
 
 }
