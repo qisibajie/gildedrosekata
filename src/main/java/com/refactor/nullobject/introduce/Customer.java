@@ -5,16 +5,20 @@ public class Customer {
     private BillingPlan plan;
     private PaymentHistory history;
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public BillingPlan getPlan(){
-        return  plan;
+    public BillingPlan getPlan() {
+        return plan;
     }
 
-    public PaymentHistory getHistory(){
-        return  history;
+    public PaymentHistory getHistory() {
+        return history;
+    }
+
+    public boolean isNull() {
+        return false;
     }
 
 }
